@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel del paciente · CLINIBOX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- ===================== BARRA LATERAL ===================== -->
+  <nav class="barra-lateral">
+    <div class="marca">
+      <div class="marca-icono"></div>
+      <div class="marca-texto">CLINIBOX</div>
+    </div>
+
+    <div class="nav-seccion">Mi cuenta</div>
+    <div class="nav-lateral">
+      <a href="dashboard.html" class="activo"><span class="icono">🏠</span> Inicio</a>
+      <a href="#agendar-seccion"><span class="icono">🗓</span> Agendar cita</a>
+      <a href="#historial-seccion"><span class="icono">📖</span> Mi historial médico</a>
+    </div>
+
+    <div class="nav-seccion">Cuenta</div>
+    <div class="nav-lateral">
+      <a href="#" onclick="abrirModal('modal-config'); return false;"><span class="icono">⚙</span> Configuración</a>
+      <a href="../auth/login.html"><span class="icono">⏻</span> Cerrar sesión</a>
+    </div>
+
+    <div class="barra-lateral-pie">
+      <div class="tarjeta-usuario">
+        <div class="avatar">RS</div>
+        <div>
+          <div class="nombre">Renata Solís</div>
+          <div class="rol">Paciente</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== CONTENIDO ===================== -->
+  <div class="contenido">
+    <header class="barra-superior">
+      <div>
+        <h2 style="margin-bottom:2px;">Hola, Renata</h2>
+        <div class="fecha-hoy">Jueves, 3 de septiembre de 2026</div>
+      </div>
+      <div class="acciones-superior">
+        <button class="icono-boton" title="Notificaciones">🔔</button>
+        <button class="icono-boton" title="Configuración" onclick="abrirModal('modal-config')">⚙</button>
+        <div class="avatar">RS</div>
+      </div>
+    </header>
+
+    <div class="zona">
+
+      <!-- Estadísticas -->
+      <section class="rejilla-stats">
+        <div class="stat"><div class="num">1</div><div class="etiqueta">Próxima cita</div></div>
+        <div class="stat ok"><div class="num">6</div><div class="etiqueta">Consultas este año</div></div>
+        <div class="stat dorado"><div class="num">Dr. Ochoa</div><div class="etiqueta">Especialista asignado</div></div>
+        <div class="stat"><div class="num">O+</div><div class="etiqueta">Tipo de sangre</div></div>
+      </section>
+
+      <div class="rejilla-dos">
+        <!-- Agendar cita -->
+        <section class="tarjeta" id="agendar-seccion">
+          <div class="tarjeta-titulo">
+            <h3>Agendar una cita</h3>
+          </div>
+
+          <div class="campo">
+            <label for="especialista">Especialista</label>
+            <select id="especialista">
+              <option>Dr. Ismael Ochoa — Cardiología</option>
+              <option>Dra. Lucía Farías — Dermatología</option>
+              <option>Dr. Andrés Vidal — Medicina general</option>
+            </select>
+          </div>
+
+          <p class="ayuda" style="margin:-6px 0 12px;">Horarios disponibles esta semana. Selecciona un espacio libre.</p>
+
+          <div class="rejilla-horarios">
+            <div class="franja"><div class="dia">Lun 7</div><div class="hora">09:00</div></div>
+            <div class="franja ocupada"><div class="dia">Lun 7</div><div class="hora">10:00</div></div>
+            <div class="franja"><div class="dia">Mar 8</div><div class="hora">11:30</div></div>
+            <div class="franja"><div class="dia">Mié 9</div><div class="hora">09:30</div></div>
+            <div class="franja ocupada"><div class="dia">Mié 9</div><div class="hora">12:00</div></div>
+            <div class="franja"><div class="dia">Jue 10</div><div class="hora">16:00</div></div>
+            <div class="franja"><div class="dia">Vie 11</div><div class="hora">08:30</div></div>
+            <div class="franja"><div class="dia">Vie 11</div><div class="hora">13:00</div></div>
+          </div>
+
+          <div class="campo" style="margin-top:16px;">
+            <label for="motivo">Motivo de la consulta</label>
+            <textarea id="motivo" placeholder="Describe brevemente el motivo de tu visita..."></textarea>
+          </div>
+
+          <p class="ayuda">Horario seleccionado: <strong id="resumen-cita">ninguno todavía</strong></p>
+          <button class="btn btn-acento btn-ancho" id="btn-confirmar-cita" disabled onclick="abrirModal('modal-confirmacion')">Confirmar cita</button>
+        </section>
+
+        <!-- Próximas citas -->
+        <section class="tarjeta">
+          <h3>Mis próximas citas</h3>
+          <div class="lista-citas">
+            <div class="cita-item">
+              <div class="cita-hora">09:00<span>AM</span></div>
+              <div class="cita-info">
+                <strong>Dr. Ismael Ochoa</strong>
+                <span>Cardiología · Jueves 10 sep</span>
+              </div>
+              <span class="insignia insignia-confirmada">Confirmada</span>
+            </div>
+            <div class="cita-item">
+              <div class="cita-hora">13:00<span>PM</span></div>
+              <div class="cita-info">
+                <strong>Dra. Lucía Farías</strong>
+                <span>Dermatología · Viernes 25 sep</span>
+              </div>
+              <span class="insignia insignia-pendiente">Pendiente</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Historial médico -->
+      <section class="tarjeta" id="historial-seccion" style="margin-top:22px;">
+        <h3>Mi historial médico</h3>
+        <div class="linea-tiempo">
+          <div class="evento-tiempo">
+            <div class="punto-tiempo"></div>
+            <div>
+              <div class="fecha">28 de agosto de 2026 · Dr. Ismael Ochoa</div>
+              <h4>Hipertensión leve</h4>
+              <p>Tratamiento indicado: Losartán 50mg cada 24h. Se recomienda control de presión semanal y baja en consumo de sodio.</p>
+            </div>
+          </div>
+          <div class="evento-tiempo">
+            <div class="punto-tiempo"></div>
+            <div>
+              <div class="fecha">14 de mayo de 2026 · Dra. Lucía Farías</div>
+              <h4>Dermatitis de contacto</h4>
+              <p>Se indicó crema con hidrocortisona al 1% por 7 días. Evolución favorable en la siguiente revisión.</p>
+            </div>
+          </div>
+          <div class="evento-tiempo">
+            <div class="punto-tiempo"></div>
+            <div>
+              <div class="fecha">2 de febrero de 2026 · Dr. Andrés Vidal</div>
+              <h4>Chequeo general anual</h4>
+              <p>Resultados de laboratorio dentro de parámetros normales. Próximo chequeo recomendado en 12 meses.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL: confirmación de cita ===================== -->
+<div class="fondo-modal oculto" id="modal-confirmacion">
+  <div class="modal" style="max-width:380px; text-align:center;">
+    <div style="width:52px;height:52px;border-radius:50%;background:var(--verde-ok-fondo);color:var(--verde-ok);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 14px;">✓</div>
+    <h3>¡Cita agendada!</h3>
+    <p>Te enviaremos un recordatorio antes de tu consulta con <strong id="resumen-cita-confirm">Dr. Ismael Ochoa</strong>.</p>
+    <button class="btn btn-primario btn-ancho" onclick="cerrarModal('modal-confirmacion')">Entendido</button>
+  </div>
+</div>
+
+<!-- ===================== MODAL: configuración de cuenta ===================== -->
+<div class="fondo-modal oculto" id="modal-config">
+  <div class="modal" style="max-width:520px;">
+    <div class="modal-cabecera">
+      <h3>Configuración de mi cuenta</h3>
+      <button class="cerrar-modal" onclick="cerrarModal('modal-config')">✕</button>
+    </div>
+
+    <div class="pestanas" data-tab-group data-tab-panels="#panel-config-paciente">
+      <button class="activa" data-tab="generales">Datos generales</button>
+      <button data-tab="clinicos">Datos clínicos</button>
+      <button data-tab="seguridad">Seguridad</button>
+    </div>
+
+    <div id="panel-config-paciente">
+      <div data-tab-panel="generales">
+        <div class="campo-fila">
+          <div class="campo"><label>Nombre</label><input type="text" value="Renata"></div>
+          <div class="campo"><label>Apellido</label><input type="text" value="Solís"></div>
+        </div>
+        <div class="campo-fila">
+          <div class="campo"><label>Correo electrónico</label><input type="email" value="renata.solis@vitalis.mx"></div>
+          <div class="campo"><label>Teléfono</label><input type="tel" value="228 555 0134"></div>
+        </div>
+        <button type="button" class="btn btn-primario btn-ancho">Guardar cambios</button>
+      </div>
+
+      <div data-tab-panel="clinicos" class="oculto">
+        <div class="campo-fila">
+          <div class="campo"><label>Tipo de sangre</label>
+            <select><option>O+</option><option>O-</option><option>A+</option><option>A-</option></select>
+          </div>
+          <div class="campo"><label>Sexo</label>
+            <select><option>Femenino</option><option>Masculino</option></select>
+          </div>
+        </div>
+        <div class="campo"><label>Alergias conocidas</label><input type="text" value="Penicilina"></div>
+        <button type="button" class="btn btn-primario btn-ancho">Guardar cambios</button>
+      </div>
+
+      <div data-tab-panel="seguridad" class="oculto">
+        <div class="campo"><label>Contraseña actual</label><input type="password" placeholder="••••••••"></div>
+        <div class="campo"><label>Nueva contraseña</label><input type="password" placeholder="••••••••"></div>
+        <button type="button" class="btn btn-primario btn-ancho">Actualizar contraseña</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

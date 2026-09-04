@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de administración · CLINIBOX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<div class="app">
+  <!-- ===================== BARRA LATERAL ===================== -->
+  <nav class="barra-lateral">
+    <div class="marca">
+      <div class="marca-icono"></div>
+      <div class="marca-texto">CLINIBOX</div>
+    </div>
+
+    <div class="nav-seccion">Administración</div>
+    <div class="nav-lateral">
+      <a href="dashboard.html" class="activo"><span class="icono">🏠</span> Resumen</a>
+      <a href="#pacientes-seccion"><span class="icono">🧑‍🤝‍🧑</span> Pacientes</a>
+      <a href="#doctores-seccion"><span class="icono">🩺</span> Doctores</a>
+    </div>
+
+    <div class="nav-seccion">Cuenta</div>
+    <div class="nav-lateral">
+      <a href="#" onclick="abrirModal('modal-config'); return false;"><span class="icono">⚙</span> Configuración</a>
+      <a href="../auth/login.html"><span class="icono">⏻</span> Cerrar sesión</a>
+    </div>
+
+    <div class="barra-lateral-pie">
+      <div class="tarjeta-usuario">
+        <div class="avatar">PR</div>
+        <div>
+          <div class="nombre">Paula Reséndez</div>
+          <div class="rol">Administradora</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== CONTENIDO ===================== -->
+  <div class="contenido">
+    <header class="barra-superior">
+      <div>
+        <h2 style="margin-bottom:2px;">Panel de administración</h2>
+        <div class="fecha-hoy">Jueves, 3 de septiembre de 2026</div>
+      </div>
+      <div class="acciones-superior">
+        <button class="icono-boton" title="Notificaciones">🔔</button>
+        <button class="icono-boton" title="Configuración" onclick="abrirModal('modal-config')">⚙</button>
+        <div class="avatar">PR</div>
+      </div>
+    </header>
+
+    <div class="zona">
+
+      <!-- Estadísticas -->
+      <section class="rejilla-stats">
+        <div class="stat"><div class="num">318</div><div class="etiqueta">Pacientes registrados</div></div>
+        <div class="stat ok"><div class="num">12</div><div class="etiqueta">Doctores activos</div></div>
+        <div class="stat dorado"><div class="num">27</div><div class="etiqueta">Citas programadas hoy</div></div>
+        <div class="stat"><div class="num">6</div><div class="etiqueta">Especialidades</div></div>
+      </section>
+
+      <!-- Pacientes -->
+      <section class="tarjeta" id="pacientes-seccion">
+        <div class="tarjeta-titulo">
+          <h3>Pacientes registrados</h3>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <div class="buscador"><span>🔍</span><input type="text" placeholder="Buscar paciente..."></div>
+            <button class="btn btn-acento" onclick="abrirModal('modal-nuevo-paciente')">＋ Agregar paciente</button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Paciente</th><th>Correo</th><th>Doctor asignado</th><th>Registrado</th><th>Estado</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="paciente-celda"><div class="avatar">RS</div> Renata Solís</div></td>
+              <td>renata.solis@vitalis.mx</td>
+              <td>Dr. Ismael Ochoa</td>
+              <td>11 mar 2026</td>
+              <td><span class="insignia insignia-activo">Activo</span></td>
+              <td class="fila-acciones">
+                <button class="btn btn-linea btn-pequeno">Editar</button>
+                <button class="btn btn-peligro btn-pequeno" onclick="abrirModal('modal-eliminar')">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="paciente-celda"><div class="avatar">ML</div> Mauricio Landa</div></td>
+              <td>mauricio.landa@vitalis.mx</td>
+              <td>Dr. Ismael Ochoa</td>
+              <td>2 feb 2026</td>
+              <td><span class="insignia insignia-activo">Activo</span></td>
+              <td class="fila-acciones">
+                <button class="btn btn-linea btn-pequeno">Editar</button>
+                <button class="btn btn-peligro btn-pequeno" onclick="abrirModal('modal-eliminar')">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="paciente-celda"><div class="avatar">AB</div> Ana Belén Ruiz</div></td>
+              <td>ana.ruiz@vitalis.mx</td>
+              <td>Dra. Lucía Farías</td>
+              <td>19 dic 2025</td>
+              <td><span class="insignia insignia-inactivo">Inactivo</span></td>
+              <td class="fila-acciones">
+                <button class="btn btn-linea btn-pequeno">Editar</button>
+                <button class="btn btn-peligro btn-pequeno" onclick="abrirModal('modal-eliminar')">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Doctores -->
+      <section class="tarjeta" id="doctores-seccion" style="margin-top:22px;">
+        <div class="tarjeta-titulo">
+          <h3>Doctores y especialistas</h3>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <div class="buscador"><span>🔍</span><input type="text" placeholder="Buscar doctor..."></div>
+            <button class="btn btn-acento" onclick="abrirModal('modal-nuevo-doctor')">＋ Agregar doctor</button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Doctor</th><th>Especialidad</th><th>Correo</th><th>Pacientes</th><th>Estado</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="paciente-celda"><div class="avatar">IO</div> Dr. Ismael Ochoa</div></td>
+              <td>Cardiología</td>
+              <td>ismael.ochoa@vitalis.mx</td>
+              <td>86</td>
+              <td><span class="insignia insignia-activo">Activo</span></td>
+              <td class="fila-acciones">
+                <button class="btn btn-linea btn-pequeno">Editar</button>
+                <button class="btn btn-peligro btn-pequeno" onclick="abrirModal('modal-eliminar')">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="paciente-celda"><div class="avatar">LF</div> Dra. Lucía Farías</div></td>
+              <td>Dermatología</td>
+              <td>lucia.farias@vitalis.mx</td>
+              <td>64</td>
+              <td><span class="insignia insignia-activo">Activo</span></td>
+              <td class="fila-acciones">
+                <button class="btn btn-linea btn-pequeno">Editar</button>
+                <button class="btn btn-peligro btn-pequeno" onclick="abrirModal('modal-eliminar')">Eliminar</button>
+              </td>
+            </tr>
+            <tr>
+              <td><div class="paciente-celda"><div class="avatar">AV</div> Dr. Andrés Vidal</div></td>
+              <td>Medicina general</td>
+              <td>andres.vidal@vitalis.mx</td>
+              <td>121</td>
+              <td><span class="insignia insignia-inactivo">De baja</span></td>
+              <td class="fila-acciones">
+                <button class="btn btn-linea btn-pequeno">Editar</button>
+                <button class="btn btn-peligro btn-pequeno" onclick="abrirModal('modal-eliminar')">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL: agregar paciente ===================== -->
+<div class="fondo-modal oculto" id="modal-nuevo-paciente">
+  <div class="modal">
+    <div class="modal-cabecera">
+      <h3>Agregar paciente</h3>
+      <button class="cerrar-modal" onclick="cerrarModal('modal-nuevo-paciente')">✕</button>
+    </div>
+    <form onsubmit="return false;">
+      <div class="campo-fila">
+        <div class="campo"><label>Nombre</label><input type="text" placeholder="Nombre"></div>
+        <div class="campo"><label>Apellido</label><input type="text" placeholder="Apellido"></div>
+      </div>
+      <div class="campo"><label>Correo electrónico</label><input type="email" placeholder="correo@ejemplo.com"></div>
+      <div class="campo-fila">
+        <div class="campo"><label>Teléfono</label><input type="tel" placeholder="228 555 0000"></div>
+        <div class="campo"><label>Doctor asignado</label>
+          <select><option>Dr. Ismael Ochoa</option><option>Dra. Lucía Farías</option><option>Dr. Andrés Vidal</option></select>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:6px;">
+        <button type="button" class="btn btn-linea" style="flex:1;" onclick="cerrarModal('modal-nuevo-paciente')">Cancelar</button>
+        <button type="button" class="btn btn-primario" style="flex:1;" onclick="cerrarModal('modal-nuevo-paciente')">Registrar paciente</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== MODAL: agregar doctor ===================== -->
+<div class="fondo-modal oculto" id="modal-nuevo-doctor">
+  <div class="modal">
+    <div class="modal-cabecera">
+      <h3>Agregar doctor / especialista</h3>
+      <button class="cerrar-modal" onclick="cerrarModal('modal-nuevo-doctor')">✕</button>
+    </div>
+    <form onsubmit="return false;">
+      <div class="campo-fila">
+        <div class="campo"><label>Nombre</label><input type="text" placeholder="Nombre"></div>
+        <div class="campo"><label>Apellido</label><input type="text" placeholder="Apellido"></div>
+      </div>
+      <div class="campo-fila">
+        <div class="campo"><label>Especialidad</label><input type="text" placeholder="Ej. Pediatría"></div>
+        <div class="campo"><label>Cédula profesional</label><input type="text" placeholder="00000000"></div>
+      </div>
+      <div class="campo"><label>Correo electrónico</label><input type="email" placeholder="correo@vitalis.mx"></div>
+      <div class="campo"><label>Consultorio</label><input type="text" placeholder="Ej. Consultorio 4"></div>
+      <div style="display:flex; gap:10px; margin-top:6px;">
+        <button type="button" class="btn btn-linea" style="flex:1;" onclick="cerrarModal('modal-nuevo-doctor')">Cancelar</button>
+        <button type="button" class="btn btn-primario" style="flex:1;" onclick="cerrarModal('modal-nuevo-doctor')">Registrar doctor</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== MODAL: confirmar eliminación ===================== -->
+<div class="fondo-modal oculto" id="modal-eliminar">
+  <div class="modal" style="max-width:380px; text-align:center;">
+    <div style="width:52px;height:52px;border-radius:50%;background:var(--rojo-fondo);color:var(--rojo-alerta);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 14px;">!</div>
+    <h3>¿Eliminar este registro?</h3>
+    <p>Esta acción eliminará permanentemente el registro del sistema. No se puede deshacer.</p>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-linea" style="flex:1;" onclick="cerrarModal('modal-eliminar')">Cancelar</button>
+      <button class="btn btn-peligro" style="flex:1; background:var(--rojo-alerta); color:#fff;" onclick="cerrarModal('modal-eliminar')">Sí, eliminar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODAL: configuración de cuenta ===================== -->
+<div class="fondo-modal oculto" id="modal-config">
+  <div class="modal" style="max-width:520px;">
+    <div class="modal-cabecera">
+      <h3>Configuración de mi cuenta</h3>
+      <button class="cerrar-modal" onclick="cerrarModal('modal-config')">✕</button>
+    </div>
+
+    <div class="pestanas" data-tab-group data-tab-panels="#panel-config-admin">
+      <button class="activa" data-tab="generales">Datos generales</button>
+      <button data-tab="seguridad">Seguridad</button>
+    </div>
+
+    <div id="panel-config-admin">
+      <div data-tab-panel="generales">
+        <div class="campo-fila">
+          <div class="campo"><label>Nombre</label><input type="text" value="Paula"></div>
+          <div class="campo"><label>Apellido</label><input type="text" value="Reséndez"></div>
+        </div>
+        <div class="campo-fila">
+          <div class="campo"><label>Correo electrónico</label><input type="email" value="paula.resendez@vitalis.mx"></div>
+          <div class="campo"><label>Teléfono</label><input type="tel" value="228 555 0199"></div>
+        </div>
+        <button type="button" class="btn btn-primario btn-ancho">Guardar cambios</button>
+      </div>
+
+      <div data-tab-panel="seguridad" class="oculto">
+        <div class="campo"><label>Contraseña actual</label><input type="password" placeholder="••••••••"></div>
+        <div class="campo"><label>Nueva contraseña</label><input type="password" placeholder="••••••••"></div>
+        <button type="button" class="btn btn-primario btn-ancho">Actualizar contraseña</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

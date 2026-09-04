@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de paciente · CLINIBOX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+<div class="acceso">
+  <aside class="acceso-panel">
+    <div>
+      <div class="marca">
+        <div class="marca-icono">B</div>
+        <div class="marca-texto">CLINIBOX</div>
+      </div>
+      <p class="acceso-cita">Regístrate una vez y agenda con cualquiera de nuestros especialistas cuando lo necesites.</p>
+      <ul class="acceso-lista">
+        <li><span class="punto-check">✓</span> Registro rápido, sin filas</li>
+        <li><span class="punto-check">✓</span> Tus datos protegidos y privados</li>
+        <li><span class="punto-check">✓</span> Acceso inmediato a la agenda médica</li>
+      </ul>
+    </div>
+    <p class="acceso-firma">CLINIBOX · Oaxaca, México</p>
+  </aside>
+
+  <main class="acceso-formulario">
+    <div class="formulario-envoltorio" style="max-width:460px;">
+      <h1>Crea tu cuenta de paciente</h1>
+      <p>Completa tus datos para reservar tu primera cita.</p>
+
+      <form onsubmit="return false;">
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Renata">
+          </div>
+          <div class="campo">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" placeholder="Solís">
+          </div>
+        </div>
+
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="fecha-nac">Fecha de nacimiento</label>
+            <input type="date" id="fecha-nac">
+          </div>
+          <div class="campo">
+            <label for="sexo">Sexo</label>
+            <select id="sexo">
+              <option>Femenino</option>
+              <option>Masculino</option>
+              <option>Prefiero no decirlo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="correo-reg">Correo electrónico</label>
+          <input type="email" id="correo-reg" placeholder="tucorreo@ejemplo.com">
+        </div>
+
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" placeholder="228 555 0134">
+          </div>
+          <div class="campo">
+            <label for="tipo-sangre">Tipo de sangre</label>
+            <select id="tipo-sangre">
+              <option>O+</option><option>O-</option><option>A+</option><option>A-</option>
+              <option>B+</option><option>B-</option><option>AB+</option><option>AB-</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="alergias">Alergias conocidas (opcional)</label>
+          <input type="text" id="alergias" placeholder="Penicilina, polen...">
+        </div>
+
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="contrasena-reg">Contraseña</label>
+            <input type="password" id="contrasena-reg" placeholder="••••••••">
+          </div>
+          <div class="campo">
+            <label for="confirmar">Confirmar contraseña</label>
+            <input type="password" id="confirmar" placeholder="••••••••">
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primario btn-ancho">Crear mi cuenta</button>
+      </form>
+
+      <p class="formulario-pie">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+    </div>
+  </main>
+</div>
+
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>
